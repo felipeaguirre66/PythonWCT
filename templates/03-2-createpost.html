@@ -1,0 +1,40 @@
+{% extends "01-plantilla_base.html" %}
+
+{% load static%}
+
+{% block contenido_base %}
+<style >
+body {
+    background-image: url('https://wallpaperaccess.com/full/3426921.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: cover;
+    background-size: 100% 100%;
+}
+</style >
+<br><header class="masthead" style="background-image: url('https://w0.peakpx.com/wallpaper/242/817/HD-wallpaper-kyoto-japanese-cities-yasaka-pagoda-street-nightscapes-japan-asia.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 left-content-left">
+            <div class="col-md-10 col-lg-8 col-xl-3">
+                <div class="site-heading">
+                    <h1 style="color:whitesmoke;"> WorldClass Tourism</h1>
+                    <h5 style="color:whitesmoke;">Kyoto, Japan.</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<body>
+    <h1>What would you like to share?</h1>
+    <h5>Take into account that you can paste an image url to include it in the post.</h5>
+    <span class="subheading">{{mensaje}}</span>
+    <br> <form method="POST" style="margin-left: 10%;" enctype="multipart/form-data">
+        {% csrf_token%}
+        {{ form.media}}
+        {{ form.as_p}}
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+
+</body>
+{% endblock contenido_base %}
+</html>

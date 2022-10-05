@@ -1,0 +1,39 @@
+{% extends "01-plantilla_base.html" %}
+
+{% load static%}
+
+{% block contenido_base %}
+<style >
+    body {
+        background-image: url('https://wallpaperaccess.com/full/3426921.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+        background-size: cover;
+        background-size: 100% 100%;
+    }
+    </style >
+<br><header class="masthead" style="background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/10/Paris-Wallpaper-background-Download-Free.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 left-content-left">
+            <div class="col-md-10 col-lg-8 col-xl-3">
+                <div class="site-heading">
+                    <h1 style="color:whitesmoke;"> WorldClass Tourism</h1>
+                    <h5 style="color:whitesmoke;">Paris, France.</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<body>
+    <div class="container px-4 px-lg-5" style="margin: 50px auto;">
+    <form method="post">
+        {% csrf_token%}
+        <p>Are you sure you want to delete the post "{{object}}"?</p>
+        <input type="submit" value="Confirm" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" style="margin: 50px 200px;"><a href="{% url 'blog'%}" style="color:white; text-decoration:none;">Cancel</a></button>
+    </form>
+</div>
+</body>
+{% endblock contenido_base %}
+</html>

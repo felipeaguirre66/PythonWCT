@@ -1,0 +1,12 @@
+{% extends "01-plantilla_base.html" %}
+
+{% block contenido_base %}
+<p>Your username is <b>{{ object.username }}</b></p>
+
+<h3>Edit profile:</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save"/>
+</form>
+{% endblock contenido_base %}

@@ -1,0 +1,106 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>WCT</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="https://img.icons8.com/bubbles/344/earth-planet.png" sizes="32x32" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'AppWT/css/styles.css' %}" rel="stylesheet" />
+
+        {% block style_block %}
+        {% endblock style_block %}
+
+    </head>
+
+    <body>
+        <body class="d-flex flex-column min-vh-100">
+        <!-- Navigation-->
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="{% url 'home' %}">HOME</a>
+                <a class="navbar-brand" href="{% url 'blog' %}">BLOG</a>
+                <a class="navbar-brand" href="{% url 'bucketList' %}">BUCKET LIST</a>
+                <a class="navbar-brand" href="{% url 'about_us' %}">ABOUT US</a>
+                <img src="{{ user.avatar.imagen.url }}" onerror="this.style.display = 'none';" alt="" align="right" width="80" height="80" alt=""> 
+                {% if not request.user.is_authenticated %}
+                <button type="button" class="btn btn-primary"><a href="{% url 'login' %}" style="color:white; text-decoration:none;">LOG IN</a></button></li>
+                <button type="button" class="btn btn-primary" style="margin-left: 10px;"><a href="{% url 'register' %}" style="color:white; text-decoration:none;">SIGN UP</a></button></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ user.username }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="{% url 'editar_perfil' %}">Edit my profile</a></li>
+                    {% if user.avatar %}
+                    <li><a class="dropdown-item" href="{% url 'editar_avatar' %}">Edit Avatar</a></li>
+                    {% else %}
+                    <li><a class="dropdown-item" href="{% url 'agregar_avatar' %}">Add Avatar</a></li>
+                    {% endif %}
+                    <li><a class="dropdown-item" href="{% url 'logout' %}"><strong>Sign Out</strong></a></li>
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </nav>
+
+        <section style="padding:80px;">
+            {% if mensaje %}
+            <span style="background-color: lightblue;">{{mensaje}}</span>
+            {%endif%}
+            {% block contenido_base %}
+            {% endblock contenido_base %}
+
+        </section>
+
+
+        <!-- Footer-->
+        <footer class="mt-auto">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                        <ul class="list-inline mb-2">
+                        </ul>
+                        <p class= "text-muted small mb-4 mb-lg-0">&copy; Ministry of Tourism - 2022.</p>
+                    </div>
+                    <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item me-4">
+                                <a href="https://www.facebook.com/natgeo" target="_blank"><i class="bi-facebook fs-3"></i></a>
+                            </li>
+                            <li class="list-inline-item me-4">
+                                <a href="https://twitter.com/tourismgoi" target="_blank"><i class="bi-twitter fs-3"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.instagram.com/unwto/?hl=es" target="_blank"><i class="bi-instagram fs-3"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'AppWT/js/scripts.js' %}"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+    </body>
+</html>

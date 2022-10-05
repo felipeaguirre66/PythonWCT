@@ -1,0 +1,45 @@
+{% extends "01-plantilla_base.html" %}
+
+{% block contenido_base %}
+{% load static %}
+
+<header class="masthead" style="background-image: url('https://bidtellect.com/wp-content/uploads/2022/04/epic_travel-1080x675.webp)">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 left-content-left">
+            <div class="col-md-10 col-lg-8 col-xl-3">
+            <div class="site-heading">
+            <h1>About us.</h1>
+            <h1>Who are we?</h2>
+            <p><b>A brief description of the people behind WorldClass Tourism</b></p>
+            </div>
+        </div>
+    </div>
+</header>
+<hr>
+
+
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{% static 'AppWT\assets\img\felipe.jpg'%}" align="left" alt="Lipe"  style="float:left; margin-right: 15px" width="150" height="150" >
+    <p><h1>Felipe Aguirre</h1></p>
+    <div class="row gx-4 gx-lg-5 left-content-left">
+        I'm 23 years old, with diverse interests; but nothing beats traveling. 
+        I once had the dream of traveling around world, but as the years went by, I learned that it can be <br>
+        very hard to choose the best destination according to my interests and personality.
+        I know I am not alone in this, so we decided to create WorldClass Tourism; <br>
+        a website where everyone can share their experiences traveling ,and therefore, help others make the best decition.
+</div>
+<br>
+<hr>
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{% static 'AppWT/assets/img/felu.jpeg'%}" align="left" alt="Felu"  style="float:left; margin-right: 15px" width="150" height="150">
+    <p><h1>Felipe Elosu</h1></p>
+    <div class="row gx-4 gx-lg-5 left-content-center">
+        I am a 20 year old born in Buenos Aires, but raised in Neuquén.
+        Currently working as a SysAdmin at IBM, learning Python alongside it, in order to master Cloud Computing at its core.<br>
+        I typically spend my weekdays' spare time in the gym, trying to become a better version of myself,
+        whilst on the weekends I gather with friends, as I consider that my key point to start fresh a new week.<br>
+</div>
+
+</html>
+
+{% endblock contenido_base %}
